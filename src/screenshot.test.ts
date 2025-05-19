@@ -52,6 +52,7 @@ describe("screenshot", () => {
     expect(mockPage.screenshot).toHaveBeenCalledWith({
       path: "screenshot-test.png",
       fullPage: true,
+      type: "png",
     });
     expect(mockPage.close).toHaveBeenCalled();
     expect(mockBrowser.close).toHaveBeenCalled();
@@ -70,6 +71,7 @@ describe("screenshot", () => {
     expect(mockPage.screenshot).toHaveBeenCalledWith({
       path: "custom-screenshot.png",
       fullPage: true,
+      type: "png",
     });
   });
 
@@ -85,6 +87,7 @@ describe("screenshot", () => {
     expect(mockPage.screenshot).toHaveBeenCalledWith({
       path: "screenshot-test.png",
       fullPage: false,
+      type: "png",
     });
   });
 

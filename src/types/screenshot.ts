@@ -8,4 +8,7 @@ export interface ScreenshotOptions {
   waitFor?: string;
   fullPage?: boolean;
   viewport?: ViewportSize;
+  format?: "png" | "jpeg";
+  quality?: number;
+  template?: string;
 }

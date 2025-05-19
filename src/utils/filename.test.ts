@@ -8,13 +8,19 @@ describe("generateFilename", () => {
     expect(filename).toMatch(/^screenshot-\d{4}-\d{2}-\d{2}T\d{2}-\d{2}-\d{2}-\d{3}Z\.png$/);
   });
 
+  it("generates a jpeg filename with correct format", () => {
+    const filename = generateFilename({ format: "jpeg" });
+
+    expect(filename).toMatch(/^screenshot-\d{4}-\d{2}-\d{2}T\d{2}-\d{2}-\d{2}-\d{3}Z\.jpeg$/);
+  });
+
   it("includes screenshot prefix", () => {
     const filename = generateFilename();
 
     expect(filename).toMatch(/^screenshot-/);
   });
 
-  it("includes png extension", () => {
+  it("includes png extension by default", () => {
     const filename = generateFilename();
 
     expect(filename).toMatch(/\.png$/);

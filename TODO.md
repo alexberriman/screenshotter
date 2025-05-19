@@ -46,10 +46,10 @@ A focused CLI tool for taking screenshots in automated environments, particularl
   - [✅] Wait for network idle
   - [✅] Wait for specific selector (optional)
   - [✅] Custom wait time after load
-- [ ] Output control:
-  - [ ] Support PNG and JPEG formats (default to png)
-  - [ ] JPEG quality option
-  - [ ] Filename template support (with placeholders)
+- [✅] Output control:
+  - [✅] Support PNG and JPEG formats (default to png)
+  - [✅] JPEG quality option
+  - [✅] Filename template support (with placeholders)
 - [ ] Reliability features:
   - [ ] Retry on failure (configurable)
   - [ ] Timeout handling

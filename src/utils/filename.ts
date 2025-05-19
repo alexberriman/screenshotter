@@ -1,4 +1,5 @@
-export function generateFilename(): string {
+export function generateFilename(options?: { format?: string }): string {
   const timestamp = new Date().toISOString().replaceAll(/[:.]/g, "-");
-  return `screenshot-${timestamp}.png`;
+  const format = options?.format || "png";
+  return `screenshot-${timestamp}.${format}`;
 }

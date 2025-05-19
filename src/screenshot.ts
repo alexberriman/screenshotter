@@ -3,6 +3,7 @@ import tsResults from "ts-results";
 const { Ok, Err } = tsResults;
 import type { ScreenshotOptions } from "./types/screenshot";
 import { generateFilename } from "./utils/filename";
+import { formatTemplate, getTemplateValues } from "./utils/template";
 
 export async function screenshot(
   options: ScreenshotOptions
@@ -38,12 +39,22 @@ export async function screenshot(
     }
 
     // Generate output filename if not provided
-    const outputPath = options.output || generateFilename();
+    let outputPath = options.output;
+    if (!outputPath) {
+      if (options.template) {
+        const values = getTemplateValues(options.url, options.format || "png");
+        outputPath = formatTemplate(options.template, values);
+      } else {
+        outputPath = generateFilename({ format: options.format });
+      }
+    }
 
     // Take screenshot
     await page.screenshot({
       path: outputPath,
       fullPage: options.fullPage !== false, // Default to true
+      type: options.format || "png",
+      ...(options.format === "jpeg" && { quality: options.quality }),
     });
 
     return Ok(outputPath);
