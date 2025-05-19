@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import { program } from "commander";
 import { version, description } from "../package.json";
 import { screenshot } from "./screenshot";
@@ -31,14 +29,15 @@ program
 
         if (result.err) {
           console.error(`Error: ${result.val}`);
-          process.exit(1);
+          // For CLI, we use throw to exit with error
+          throw new Error("Screenshot failed");
         }
 
         console.log(`Screenshot saved to: ${result.val}`);
-        process.exit(0);
       } catch (error) {
         console.error(`Unexpected error: ${error}`);
-        process.exit(1);
+        // Re-throw to let Node.js handle the exit
+        throw error;
       }
     }
   );

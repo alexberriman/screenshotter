@@ -1,9 +1,12 @@
 import { chromium, Browser, Page } from "playwright";
-import { Ok, Err, Result } from "ts-results";
+import tsResults from "ts-results";
+const { Ok, Err } = tsResults;
 import type { ScreenshotOptions } from "./types/screenshot";
 import { generateFilename } from "./utils/filename";
 
-export async function screenshot(options: ScreenshotOptions): Promise<Result<string, string>> {
+export async function screenshot(
+  options: ScreenshotOptions
+): Promise<tsResults.Result<string, string>> {
   let browser: Browser | null = null;
   let page: Page | null = null;
 

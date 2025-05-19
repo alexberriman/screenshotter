@@ -20,11 +20,11 @@ A focused CLI tool for taking screenshots in automated environments, particularl
 
 ## 🎯 Core Functionality
 
-- [ ] Implement basic screenshot capture:
-  - [ ] Use Playwright (not Puppeteer) for better performance
-  - [ ] Accept URL as command argument
-  - [ ] Take full-page screenshot by default (to confirm - if the page is beyond 100vh i.e. is scrollable, we need to screenshot the ENTIRE page)
-  - [ ] Save with timestamp-based filename
+- [✅] Implement basic screenshot capture:
+  - [✅] Use Playwright (not Puppeteer) for better performance
+  - [✅] Accept URL as command argument
+  - [✅] Take full-page screenshot by default (to confirm - if the page is beyond 100vh i.e. is scrollable, we need to screenshot the ENTIRE page)
+  - [✅] Save with timestamp-based filename
 - [ ] Add essential CLI options:
   - [ ] `-o, --output` - Output file path
   - [ ] `-t, --timeout` - Page load timeout (default: 30s)
