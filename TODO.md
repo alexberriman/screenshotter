@@ -4,7 +4,7 @@ A focused CLI tool for taking screenshots in automated environments, particularl
 
 ---
 
-## 🏗️ Setup & Infrastructure
+## ✅ Setup & Infrastructure
 
 - [✅] Create proper TypeScript project structure:
   - [✅] `src/index.ts` - CLI entry point with shebang
@@ -18,7 +18,7 @@ A focused CLI tool for taking screenshots in automated environments, particularl
 
 ---
 
-## 🎯 Core Functionality
+## ✅ Core Functionality
 
 - [✅] Implement basic screenshot capture:
   - [✅] Use Playwright (not Puppeteer) for better performance
@@ -37,7 +37,7 @@ A focused CLI tool for taking screenshots in automated environments, particularl
 
 ---
 
-## 🔧 Automation-Friendly Features
+## ✅ Automation-Friendly Features
 
 - [✅] Add viewport support:
   - [✅] `-v, --viewport` - Specify viewport size (e.g., "1920x1080")
@@ -72,7 +72,7 @@ A focused CLI tool for taking screenshots in automated environments, particularl
 
 ---
 
-## 📦 Publishing & Documentation
+## ✅ Publishing & Documentation
 
 - [✅] Create comprehensive README:
   - [✅] Installation instructions
@@ -82,7 +82,7 @@ A focused CLI tool for taking screenshots in automated environments, particularl
 
 ---
 
-## 🚀 Docker
+## ✅ Docker
 
 - [✅] Docker image for containerized usage
 
