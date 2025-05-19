@@ -2,6 +2,8 @@
 
 A focused CLI tool for taking screenshots in automated environments, particularly for capturing work-in-progress from development tools.
 
+**ALL TASKS COMPLETED ✅**
+
 ---
 
 ## ✅ Setup & Infrastructure
