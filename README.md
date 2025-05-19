@@ -26,6 +26,13 @@ bun run build
 bun ./dist/index.js https://example.com
 ```
 
+Or use Docker:
+
+```bash
+docker pull screenshotter/cli:latest
+docker run -v $(pwd):/output screenshotter/cli:latest https://example.com -o /output/screenshot.png
+```
+
 ## Usage
 
 ```bash
@@ -141,6 +148,56 @@ else
   echo "Failed to capture screenshot"
   exit 1
 fi
+```
+
+## Docker Usage
+
+### Building the Docker Image
+
+```bash
+# Build the image locally
+npm run docker:build
+
+# Or use docker directly
+docker build -t screenshotter:latest .
+```
+
+### Running with Docker
+
+```bash
+# Basic usage - output to current directory
+docker run --rm -v $(pwd):/output screenshotter:latest https://example.com -o /output/screenshot.png
+
+# With custom viewport
+docker run --rm -v $(pwd):/output screenshotter:latest https://example.com -v mobile -o /output/mobile.png
+
+# Using docker-compose
+docker-compose run screenshotter https://example.com -o /output/screenshot.png
+```
+
+### Docker-Compose Configuration
+
+The included `docker-compose.yml` provides a convenient way to run the screenshotter:
+
+```yaml
+# docker-compose.yml
+services:
+  screenshotter:
+    build: .
+    volumes:
+      - ./screenshots:/output
+```
+
+### Volume Mounting
+
+When using Docker, you need to mount a volume to access the generated screenshots:
+
+```bash
+# Mount current directory
+docker run -v $(pwd):/output screenshotter:latest https://example.com -o /output/shot.png
+
+# Mount specific directory
+docker run -v /home/user/screenshots:/output screenshotter:latest https://example.com -o /output/shot.png
 ```
 
 ## Development

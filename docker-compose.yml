@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  screenshotter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: screenshotter:latest
+    container_name: screenshotter
+    volumes:
+      # Mount host directory for output files
+      - ./screenshots:/output
+    environment:
+      # Set headless mode for browser
+      - PLAYWRIGHT_BROWSERS_PATH=/app/browsers
+    # Override the default command to take a screenshot
+    # Usage: docker-compose run screenshotter https://example.com -o /output/example.png
+    command: []
+    # Security options to run the browser
+    security_opt:
+      - seccomp=unconfined
+    cap_add:
+      - SYS_ADMIN

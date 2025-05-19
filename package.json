@@ -28,7 +28,9 @@
     "lint-staged": "lint-staged",
     "prepublishOnly": "npm run build",
     "prepack": "npm run build",
-    "postbuild": "chmod +x bin/screenshotter"
+    "postbuild": "chmod +x bin/screenshotter",
+    "docker:build": "docker build -t screenshotter:latest .",
+    "docker:run": "docker run --rm -v $(pwd)/screenshots:/output screenshotter:latest"
   },
   "repository": {
     "type": "git",
