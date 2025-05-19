@@ -6,6 +6,7 @@ import { generateFilename } from "./utils/filename";
 import { formatTemplate, getTemplateValues } from "./utils/template";
 import { retry, isRetryableError } from "./utils/retry";
 import { DEFAULT_CONFIG } from "./config/defaults";
+import { formatError } from "./utils/error-formatter";
 
 async function setupPage(browser: Browser, options: ScreenshotOptions): Promise<Page> {
   const page = await browser.newPage();
@@ -64,19 +65,12 @@ async function captureScreenshot(
 }
 
 function handleError(error: unknown, options: ScreenshotOptions): never {
-  const errorMessage = error instanceof Error ? error.message : String(error);
-
-  if (errorMessage.toLowerCase().includes("timeout")) {
-    throw new Error(
-      `Screenshot timed out after ${options.timeout || DEFAULT_CONFIG.timeout}ms: ${errorMessage}`
-    );
+  const errorMessage = formatError(error, options);
+  // Don't re-wrap if it's already a formatted error
+  if (error instanceof Error && error.message.startsWith("Failed to take screenshot:")) {
+    throw error;
   }
-
-  if (error instanceof Error && isRetryableError(error)) {
-    throw new Error(`Network error: ${errorMessage}`);
-  }
-
-  throw error as Error;
+  throw new Error(errorMessage);
 }
 
 async function takeScreenshot(options: ScreenshotOptions): Promise<string> {
@@ -114,9 +108,7 @@ export async function screenshot(
       const result = await takeScreenshot(options);
       return Ok(result);
     } catch (error) {
-      return Err(
-        `Failed to take screenshot: ${error instanceof Error ? error.message : String(error)}`
-      );
+      return Err(formatError(error, options));
     }
   }
 
