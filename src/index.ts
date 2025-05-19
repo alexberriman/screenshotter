@@ -2,6 +2,7 @@ import { program } from "commander";
 import { version, description } from "../package.json";
 import { screenshot } from "./screenshot";
 import type { ScreenshotOptions } from "./types/screenshot";
+import { parseViewport } from "./utils/viewport-parser";
 
 program
   .version(version)
@@ -11,10 +12,20 @@ program
   .option("-t, --timeout <seconds>", "Page load timeout in seconds", "30")
   .option("-w, --wait <seconds>", "Additional wait after page load")
   .option("--no-full-page", "Capture only viewport")
+  .option(
+    "-v, --viewport <size>",
+    "Viewport size (e.g., '1920x1080' or 'desktop', 'tablet', 'mobile')"
+  )
   .action(
     async (
       url: string,
-      options: { output?: string; timeout: string; wait?: string; fullPage?: boolean }
+      options: {
+        output?: string;
+        timeout: string;
+        wait?: string;
+        fullPage?: boolean;
+        viewport?: string;
+      }
     ) => {
       try {
         const screenshotOptions: ScreenshotOptions = {
@@ -24,6 +35,15 @@ program
           wait: options.wait ? Number.parseInt(options.wait) * 1000 : undefined,
           fullPage: options.fullPage,
         };
+
+        if (options.viewport) {
+          const viewportResult = parseViewport(options.viewport);
+          if (viewportResult.err) {
+            console.error(`Error: ${viewportResult.val}`);
+            throw new Error("Invalid viewport");
+          }
+          screenshotOptions.viewport = viewportResult.val;
+        }
 
         const result = await screenshot(screenshotOptions);
 

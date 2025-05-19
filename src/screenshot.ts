@@ -14,6 +14,11 @@ export async function screenshot(
     browser = await chromium.launch();
     page = await browser.newPage();
 
+    // Set viewport if specified
+    if (options.viewport) {
+      await page.setViewportSize(options.viewport);
+    }
+
     // Navigate to URL with timeout
     await page.goto(options.url, {
       timeout: options.timeout || 30_000,
