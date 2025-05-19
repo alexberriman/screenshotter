@@ -124,7 +124,7 @@ describe("screenshot", () => {
     const result = await screenshot(options);
 
     expect(result.err).toBe(true);
-    expect(result.val).toBe(`Failed to take screenshot: ${errorMessage}`);
+    expect(result.val).toBe(`Failed to take screenshot: Network error: ${errorMessage}`);
     expect(mockPage.close).toHaveBeenCalled();
     expect(mockBrowser.close).toHaveBeenCalled();
   });

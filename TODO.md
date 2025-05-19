@@ -50,10 +50,10 @@ A focused CLI tool for taking screenshots in automated environments, particularl
   - [✅] Support PNG and JPEG formats (default to png)
   - [✅] JPEG quality option
   - [✅] Filename template support (with placeholders)
-- [ ] Reliability features:
-  - [ ] Retry on failure (configurable)
-  - [ ] Timeout handling
-  - [ ] Network error handling
+- [✅] Reliability features:
+  - [✅] Retry on failure (configurable)
+  - [✅] Timeout handling
+  - [✅] Network error handling
 
 ---
 

@@ -23,6 +23,14 @@ program
     "-v, --viewport <size>",
     "Viewport size (e.g., '1920x1080' or 'desktop', 'tablet', 'mobile')"
   )
+  .option("--retry", "Enable retry on failure", false)
+  .option("--retry-attempts <number>", "Max retry attempts (default: 3)", "3")
+  .option("--retry-delay <ms>", "Initial retry delay in milliseconds (default: 1000)", "1000")
+  .option(
+    "--retry-backoff <strategy>",
+    "Retry backoff strategy: exponential, linear, fixed (default: exponential)",
+    "exponential"
+  )
   .action(
     async (
       url: string,
@@ -36,6 +44,10 @@ program
         format: string;
         quality: string;
         template?: string;
+        retry?: boolean;
+        retryAttempts?: string;
+        retryDelay?: string;
+        retryBackoff?: string;
       }
     ) => {
       try {
@@ -75,6 +87,16 @@ program
             process.exit(1);
           }
           screenshotOptions.viewport = viewportResult.val;
+        }
+
+        // Configure retry options if enabled
+        if (options.retry) {
+          screenshotOptions.retry = {
+            enabled: true,
+            maxAttempts: Number.parseInt(options.retryAttempts || "3"),
+            delay: Number.parseInt(options.retryDelay || "1000"),
+            backoff: (options.retryBackoff || "exponential") as "exponential" | "linear" | "fixed",
+          };
         }
 
         const result = await screenshot(screenshotOptions);

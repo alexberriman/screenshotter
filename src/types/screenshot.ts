@@ -1,4 +1,5 @@
 import type { ViewportSize } from "./viewport";
+import type { RetryConfig } from "./retry";
 
 export interface ScreenshotOptions {
   url: string;
@@ -11,4 +12,5 @@ export interface ScreenshotOptions {
   format?: "png" | "jpeg";
   quality?: number;
   template?: string;
+  retry?: RetryConfig;
 }
