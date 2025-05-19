@@ -6,15 +6,15 @@ A focused CLI tool for taking screenshots in automated environments, particularl
 
 ## 🏗️ Setup & Infrastructure
 
-- [ ] Create proper TypeScript project structure:
-  - [ ] `src/index.ts` - CLI entry point with shebang
-  - [ ] `src/screenshot.ts` - Core screenshot logic
-  - [ ] `src/types/` - TypeScript interfaces and types
-  - [ ] `src/utils/` - Helper functions
-  - [ ] `src/config/` - Default configuration
-- [ ] Set up build pipeline with tsup
-- [ ] Configure npm scripts for development and build
-- [ ] Add `.gitignore` with proper exclusions
+- [✅] Create proper TypeScript project structure:
+  - [✅] `src/index.ts` - CLI entry point with shebang
+  - [✅] `src/screenshot.ts` - Core screenshot logic
+  - [✅] `src/types/` - TypeScript interfaces and types
+  - [✅] `src/utils/` - Helper functions
+  - [✅] `src/config/` - Default configuration
+- [✅] Set up build pipeline with tsup
+- [✅] Configure npm scripts for development and build
+- [✅] Add `.gitignore` with proper exclusions
 
 ---
 
