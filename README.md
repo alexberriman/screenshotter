@@ -36,46 +36,46 @@ docker run -v $(pwd):/output alexberriman/screenshotter:latest https://example.c
 ## Usage
 
 ```bash
-screenshotter <url> [options]
+npx @alexberriman/screenshotter <url> [options]
 ```
 
 ### Basic Examples
 
 Take a full-page screenshot with default settings:
 ```bash
-screenshotter https://example.com
+npx @alexberriman/screenshotter https://example.com
 ```
 
 Capture with specific output path:
 ```bash
-screenshotter https://example.com -o ./screenshots/homepage.png
+npx @alexberriman/screenshotter https://example.com -o ./screenshots/homepage.png
 ```
 
 Use mobile viewport:
 ```bash
-screenshotter https://example.com -v mobile
+npx @alexberriman/screenshotter https://example.com -v mobile
 ```
 
 ### Advanced Examples
 
 Capture JPEG with custom quality:
 ```bash
-screenshotter https://example.com --format jpeg --quality 90
+npx @alexberriman/screenshotter https://example.com --format jpeg --quality 90
 ```
 
 Wait for specific element before capturing:
 ```bash
-screenshotter https://example.com --wait-for ".content-loaded"
+npx @alexberriman/screenshotter https://example.com --wait-for ".content-loaded"
 ```
 
 Use filename template with placeholders:
 ```bash
-screenshotter https://example.com --template "{domain}-{date}-{time}.{format}"
+npx @alexberriman/screenshotter https://example.com --template "{domain}-{date}-{time}.{format}"
 ```
 
 Combined options:
 ```bash
-screenshotter https://example.com \
+npx @alexberriman/screenshotter https://example.com \
   -v tablet \
   --format jpeg \
   --quality 85 \
@@ -125,7 +125,7 @@ screenshotter https://example.com \
 ```yaml
 # GitHub Actions example
 - name: Take screenshot
-  run: screenshotter https://myapp.com -o artifacts/screenshot.png
+  run: npx @alexberriman/screenshotter https://myapp.com -o artifacts/screenshot.png
 ```
 
 ### Batch Processing
@@ -135,14 +135,14 @@ screenshotter https://example.com \
 urls=("https://example.com" "https://google.com" "https://github.com")
 
 for url in "${urls[@]}"; do
-  screenshotter "$url" --template "screenshots/{domain}-{date}.png"
+  npx @alexberriman/screenshotter "$url" --template "screenshots/{domain}-{date}.png"
 done
 ```
 
 ### Error Handling
 
 ```bash
-if screenshotter https://example.com -o screenshot.png; then
+if npx @alexberriman/screenshotter https://example.com -o screenshot.png; then
   echo "Screenshot saved successfully"
 else
   echo "Failed to capture screenshot"
