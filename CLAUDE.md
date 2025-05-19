@@ -5,7 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a React frontend project with automated testing and quality checks.
+This is a Bun backend project with automated testing and quality checks.
 
 ## Code Style Conventions
 
@@ -16,16 +16,18 @@ This is a React frontend project with automated testing and quality checks.
 - **Trailing Commas**: Use trailing commas
 - **Semicolons**: Use semicolons
 
-### Component Structure
+### Code Organization
 
-Components should be organized in directories with an index.ts file.
+Code should be organized into focused modules with a clear separation of concerns.
 Example:
 ```
-components/
-  button/
-    index.ts       # Exports the component
-    button.tsx     # Component implementation
-    button.test.tsx    # Tests (adjacent to implementation)
+src/
+  features/                  # Functionality grouped by feature
+    analyzers/               # Website analysis modules
+      performance.ts         # Performance analysis module
+      performance.test.ts    # Tests adjacent to implementation
+  utils/                     # Shared utilities
+  types/                     # TypeScript type definitions
 ```
 
 ### Test Files
@@ -36,55 +38,31 @@ Test files should follow the pattern: `{name}.test.ts`
 
 Use the following technologies in this project:
 
-### Frontend
+### Backend Technology Stack
 
-- **Framework**: React v19
-- **Styling**: Tailwind v4
-- **Data Fetching**: React-query
-- **Documentation**: Storybook
-
-### Code Organization & Architecture
-
-- **Component Design**: Maximize reusability
-  - Create small, composable, reusable components
-  - Extract common patterns into shared components
-  - Build a component hierarchy that promotes reuse
-- **Component Documentation**: Every presentational component must have a Storybook story
-  - Stories should cover all component states and variants
-  - Include proper documentation of props and usage
-- **Hooks Organization**: One hook per file
-  - Each custom hook should have its own dedicated file
-  - Organize hooks by feature/entity
-  - Create separate hooks for each API operation (e.g., useCreateUser, useDeleteUser)
-- **Data Fetching Pattern**: 
-  - Create custom React Query hooks for each API endpoint
-  - Organize queries by entity/resource
-  - Leverage QueryClient for caching and background updates
-
-### UI Design Philosophy (2025)
-
-All UI components and interfaces should be CUTTING-EDGE, MODERN, and SEXY:
-
-- **Visual Design**: Create interfaces that look like they're from 2025
-  - Ultra-clean layouts with purposeful whitespace
-  - Neumorphic or glassmorphic elements that add depth and dimension
-  - Subtle shadows, gradients, and light effects
-  - Floating elements and layered UI components
-
-- **Interactions**: Design intuitive, fluid experiences
-  - Micro-animations for state changes and transitions
-  - Minimal friction in user workflows
-  - Context-aware interfaces that anticipate user needs
-
-- **Styling Approach**: Use Tailwind to create UNIQUE designs
-  - Push creative boundaries with modern aesthetics
-  - Utilize advanced color theory and typography
-  - Aim for visually IMPRESSIVE and DISTINCTIVE interfaces
-
-
-### Backend
-
+- **Runtime**: Bun
+- **Language**: Typescript
 - **Framework**: Express v5
+- **Error Handling**: ts-results
+
+### Backend Development Practices
+
+- **TypeScript Usage**: 
+  - Use strong typing - avoid `any` and `unknown` types
+  - Create interfaces or type aliases for all data structures
+  - Leverage union and intersection types where appropriate
+
+- **Error Handling**:
+  - Use Result<T, E> pattern from ts-results instead of exceptions
+  - Return Ok(value) for successful operations
+  - Return Err(error) for failure cases
+  - Chain operations with map(), mapErr(), and andThen() methods
+
+- **Code Organization**:
+  - Create small, focused functions with single responsibility
+  - Prefer pure functions when possible
+  - Group related functionality into modules
+  - Use barrel files (index.ts) to expose public APIs
 
 ### Utilities
 
@@ -100,90 +78,55 @@ All UI components and interfaces should be CUTTING-EDGE, MODERN, and SEXY:
 - **Unit Testing**: Vitest
   - Leveraging Vite for fast test execution
   - Do NOT use Jest configuration or dependencies
-- **Component Testing**: Storybook
+- **Component Testing**: Testing-library
 - **Test Location**: Tests should be placed adjacent to implementation files
   - Do NOT use __tests__ directories
 
 ### Build Tools
 
-- **Bundler**: Vite
+- **Bundler**: Bun (built-in bundler)
 - **CI/CD**: github-actions
-
-**All presentational ("dumb") components should have a corresponding Storybook story file.**
 
 
 
 ## Project Architecture
 
-Follow a clear separation of concerns with component-based architecture. Separate UI components from business logic and data fetching.
+Apply functional programming principles with a clear separation of concerns:
+
+- **Feature-based modules**: Group related functionality by feature
+- **Pure functions**: Prefer pure functions that avoid side effects
+- **Result type**: Use Result<T, E> pattern for error handling
+- **Type-driven design**: Let TypeScript types guide your implementation
+- **Modularity**: Create small, reusable, single-responsibility modules
+- **Testability**: Design for thorough unit testing
 
 
-## Frontend-Only Architecture
+## Functional Programming Principles
 
-This todo app runs entirely in the browser with these key principles:
+This project follows functional programming principles:
 
-- **localStorage**: All data persistence using browser's localStorage
-- **No Backend**: Zero server dependencies, runs completely offline
-- **Instant Performance**: No API calls, everything happens locally
-- **Privacy-First**: User data never leaves their device
-- **State Management**: Zustand for global state, synced with localStorage
-- **Offline-Ready**: Full functionality without internet connection
-- **PWA Support**: Installable as a progressive web app
-
-
-## Visual Design Principles
-
-This app prioritizes stunning visual design:
-
-- **Glassmorphism**: Frosted glass effects throughout the UI
-- **Smooth Animations**: Framer Motion for fluid interactions
-- **Micro-interactions**: Delightful feedback for every action
-- **Dynamic Backgrounds**: Animated gradients and particle effects
-- **Dark/Light Modes**: Beautiful themes with smooth transitions
-- **3D Effects**: Subtle depth with shadows and transforms
-- **Custom Cursors**: Unique cursor styles for different states
+- **Immutable data**: Avoid mutating data structures
+- **Pure functions**: Functions should have no side effects
+- **Function composition**: Build complex logic from simple functions
+- **Result type**: Use Result<T, E> to handle success/failure
+- **Early returns**: Use early returns to avoid nested conditionals
+- **Small modules**: Create small, focused modules with a single responsibility
 
 
-## Component Structure
+## File and Directory Structure
 
-Each component should be in its own directory with the following files:
-
-- `index.ts`: Barrel file exporting the component
-- `component-name.tsx`: The actual component implementation
-- `component-name.stories.tsx`: Storybook stories for the component
-
-Example component structure:
 ```
 src/
-  components/           # All UI components
-    ui/                 # @shadcn/ui components
-      button/
-      card/
-      input/
-    tasks/             # Task-related components
-      task-card/
-        index.ts
-        task-card.tsx
-        task-card.stories.tsx
-  hooks/               # Custom React hooks
-  stores/              # Zustand stores
-  utils/               # Shared utilities
-  types/               # TypeScript type definitions
+  analyzers/            # Core analysis modules
+    seo/                # SEO analysis
+    performance/        # Performance analysis
+    accessibility/      # Accessibility analysis
+    security/           # Security analysis
+  utils/                # Shared utilities
+  types/                # TypeScript type definitions
+  cli/                  # Command-line interface
+  api/                  # API endpoints (if applicable)
+tests/                  # Integration tests (component tests adjacent to source)
 ```
-
-
-## UI Design Guidelines
-
-When designing and building UI components:
-
-- Make it 🔥, sexy as fuck and beautiful for 2025
-- Implement glassmorphic effects with blur and transparency
-- Use vibrant gradients and bold color schemes
-- Add smooth spring animations to all interactions
-- Create satisfying hover and click states
-- Design with dark mode as the primary theme
-- Use generous spacing and modern typography
-- Ensure every pixel is polished to perfection
-- Add particle effects and celebrations for task completion
 
 
