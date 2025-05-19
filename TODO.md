@@ -61,9 +61,9 @@ A focused CLI tool for taking screenshots in automated environments, particularl
 
 - [ ] Write unit tests for:
   - [✅] Viewport parsing utility
-  - [ ] Error formatting
+  - [✅] Error formatting
   - [✅] Filename generation
-  - [ ] Command argument validation
+  - [✅] Command argument validation
 - [ ] Integration tests for:
   - [✅] Basic screenshot capture
   - [ ] Error scenarios
