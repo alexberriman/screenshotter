@@ -84,6 +84,6 @@ A focused CLI tool for taking screenshots in automated environments, particularl
 
 ## 🚀 Docker
 
-- [ ] Docker image for containerized usage
+- [✅] Docker image for containerized usage
 
 **Note**: Focus on core functionality first. This tool should be simple, reliable, and perfect for automation scenarios like capturing Claude Code output or development progress.
