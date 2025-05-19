@@ -70,7 +70,7 @@ A focused CLI tool for taking screenshots in automated environments, particularl
   - [✅] Basic screenshot capture
   - [✅] Error scenarios
   - [✅] Different viewport sizes
-- [✅] Add github actions workflow for pushes to main to lint, typecheck, test and build
+- [✅] Add GitHub Actions workflow for pushes to main to lint, typecheck, test and build *(initially marked complete but was missing - now implemented)*
 
 ---
 
