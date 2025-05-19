@@ -1,4 +1,6 @@
-import { Ok, Err, Result } from "ts-results";
+import type { Result } from "ts-results";
+import tsResults from "ts-results";
+const { Ok, Err } = tsResults;
 import type { ViewportSize, ViewportInput, ViewportPreset } from "../types/viewport";
 import { VIEWPORT_PRESETS } from "../types/viewport";
 

@@ -1,5 +1,6 @@
 import type { Result } from "ts-results";
-import { Ok, Err } from "ts-results";
+import tsResults from "ts-results";
+const { Ok, Err } = tsResults;
 
 export interface ArgumentValidationResult {
   format?: "png" | "jpeg";
