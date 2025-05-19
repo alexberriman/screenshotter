@@ -4,7 +4,7 @@
   "description": "CLI tool for taking full-page screenshots of websites with multiple viewports",
   "main": "dist/index.js",
   "bin": {
-    "screenshotter": "./bin/screenshotter"
+    "screenshotter": "bin/screenshotter"
   },
   "type": "module",
   "engines": {
