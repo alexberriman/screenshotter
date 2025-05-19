@@ -25,6 +25,13 @@ export async function screenshot(
       waitUntil: "networkidle",
     });
 
+    // Wait for specific selector if specified
+    if (options.waitFor) {
+      await page.waitForSelector(options.waitFor, {
+        timeout: options.timeout || 30_000,
+      });
+    }
+
     // Additional wait if specified
     if (options.wait) {
       await page.waitForTimeout(options.wait);

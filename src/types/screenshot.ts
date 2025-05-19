@@ -5,6 +5,7 @@ export interface ScreenshotOptions {
   output?: string;
   timeout?: number;
   wait?: number;
+  waitFor?: string;
   fullPage?: boolean;
   viewport?: ViewportSize;
 }

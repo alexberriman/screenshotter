@@ -11,6 +11,7 @@ program
   .option("-o, --output <path>", "Output file path")
   .option("-t, --timeout <seconds>", "Page load timeout in seconds", "30")
   .option("-w, --wait <seconds>", "Additional wait after page load")
+  .option("--wait-for <selector>", "Wait for specific CSS selector to appear")
   .option("--no-full-page", "Capture only viewport")
   .option(
     "-v, --viewport <size>",
@@ -23,6 +24,7 @@ program
         output?: string;
         timeout: string;
         wait?: string;
+        waitFor?: string;
         fullPage?: boolean;
         viewport?: string;
       }
@@ -33,6 +35,7 @@ program
           output: options.output,
           timeout: Number.parseInt(options.timeout) * 1000,
           wait: options.wait ? Number.parseInt(options.wait) * 1000 : undefined,
+          waitFor: options.waitFor,
           fullPage: options.fullPage,
         };
 
