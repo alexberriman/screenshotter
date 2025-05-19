@@ -15,7 +15,7 @@ A fast, reliable command-line tool for taking screenshots of websites. Built wit
 ## Installation
 
 ```bash
-npm install -g @screenshotter/cli
+npm install -g @alexberriman/screenshotter
 ```
 
 Or run directly with Bun:
@@ -29,8 +29,8 @@ bun ./dist/index.js https://example.com
 Or use Docker:
 
 ```bash
-docker pull screenshotter/cli:latest
-docker run -v $(pwd):/output screenshotter/cli:latest https://example.com -o /output/screenshot.png
+docker pull alexberriman/screenshotter:latest
+docker run -v $(pwd):/output alexberriman/screenshotter:latest https://example.com -o /output/screenshot.png
 ```
 
 ## Usage

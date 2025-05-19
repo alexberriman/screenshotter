@@ -29,6 +29,9 @@ export default [
         exports: "readonly",
         require: "readonly",
         global: "readonly",
+        // Browser globals for Playwright
+        window: "readonly",
+        document: "readonly",
       },
     },
     plugins: {

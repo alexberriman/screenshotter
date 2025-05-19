@@ -7,6 +7,7 @@ import { formatTemplate, getTemplateValues } from "./utils/template";
 import { retry, isRetryableError } from "./utils/retry";
 import { DEFAULT_CONFIG } from "./config/defaults";
 import { formatError } from "./utils/error-formatter";
+import { captureFullPageWithScroll } from "./utils/screenshot-with-scroll";
 
 async function setupPage(browser: Browser, options: ScreenshotOptions): Promise<Page> {
   const page = await browser.newPage();
@@ -83,9 +84,13 @@ async function takeScreenshot(options: ScreenshotOptions): Promise<string> {
 
     await navigateToUrl(page, options);
     await applyWaitStrategies(page, options);
-
+    
     const outputPath = generateOutputPath(options);
-    await captureScreenshot(page, outputPath, options);
+    
+    // Use special full page capture with scrolling to handle lazy loading and fixed headers
+    await (options.fullPage === false 
+      ? captureScreenshot(page, outputPath, options)
+      : captureFullPageWithScroll(page, outputPath, options.format || "png", options.quality));
 
     return outputPath;
   } catch (error) {

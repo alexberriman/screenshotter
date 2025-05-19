@@ -12,6 +12,7 @@ interface MockPage {
   waitForTimeout: ReturnType<typeof vi.fn>;
   screenshot: ReturnType<typeof vi.fn>;
   close: ReturnType<typeof vi.fn>;
+  evaluate: ReturnType<typeof vi.fn>;
 }
 
 interface MockBrowser {
@@ -31,6 +32,7 @@ describe("screenshot with retry", () => {
       waitForTimeout: vi.fn().mockResolvedValue(undefined),
       screenshot: vi.fn().mockResolvedValue(undefined),
       close: vi.fn().mockResolvedValue(undefined),
+      evaluate: vi.fn().mockResolvedValue(1000),
     };
 
     mockBrowser = {

@@ -13,4 +13,5 @@ export interface ScreenshotOptions {
   quality?: number;
   template?: string;
   retry?: RetryConfig;
+  trimWhitespace?: boolean;
 }

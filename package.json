@@ -1,9 +1,8 @@
 {
-  "name": "@screenshotter/cli",
+  "name": "@alexberriman/screenshotter",
   "version": "0.1.0",
   "description": "CLI tool for taking full-page screenshots of websites with multiple viewports",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
   "bin": {
     "screenshotter": "./bin/screenshotter"
   },

@@ -25,6 +25,9 @@ describe("screenshot", () => {
     waitForTimeout: vi.fn(),
     screenshot: vi.fn(),
     close: vi.fn(),
+    evaluate: vi.fn(),
+    setViewportSize: vi.fn(),
+    waitForSelector: vi.fn(),
   };
 
   beforeEach(() => {
@@ -32,6 +35,8 @@ describe("screenshot", () => {
     vi.mocked(chromium.launch).mockResolvedValue(mockBrowser as unknown as Browser);
     mockBrowser.newPage.mockResolvedValue(mockPage as unknown as Page);
     vi.mocked(generateFilename).mockReturnValue("screenshot-test.png");
+    // Mock evaluate to return a height for scrolling logic
+    mockPage.evaluate.mockResolvedValue(1000);
   });
 
   afterEach(() => {
@@ -53,6 +58,7 @@ describe("screenshot", () => {
       path: "screenshot-test.png",
       fullPage: true,
       type: "png",
+      animations: "disabled",
     });
     expect(mockPage.close).toHaveBeenCalled();
     expect(mockBrowser.close).toHaveBeenCalled();
@@ -72,6 +78,7 @@ describe("screenshot", () => {
       path: "custom-screenshot.png",
       fullPage: true,
       type: "png",
+      animations: "disabled",
     });
   });
 
