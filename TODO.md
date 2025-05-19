@@ -39,9 +39,9 @@ A focused CLI tool for taking screenshots in automated environments, particularl
 
 ## 🔧 Automation-Friendly Features
 
-- [ ] Add viewport support:
-  - [ ] `-v, --viewport` - Specify viewport size (e.g., "1920x1080")
-  - [ ] Common presets: desktop (1920x1080), tablet (768x1024), mobile (375x667)
+- [✅] Add viewport support:
+  - [✅] `-v, --viewport` - Specify viewport size (e.g., "1920x1080")
+  - [✅] Common presets: desktop (1920x1080), tablet (768x1024), mobile (375x667)
 - [ ] Add wait strategies:
   - [ ] Wait for network idle
   - [ ] Wait for specific selector (optional)
