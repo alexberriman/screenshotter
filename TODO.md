@@ -25,15 +25,15 @@ A focused CLI tool for taking screenshots in automated environments, particularl
   - [✅] Accept URL as command argument
   - [✅] Take full-page screenshot by default (to confirm - if the page is beyond 100vh i.e. is scrollable, we need to screenshot the ENTIRE page)
   - [✅] Save with timestamp-based filename
-- [ ] Add essential CLI options:
-  - [ ] `-o, --output` - Output file path
-  - [ ] `-t, --timeout` - Page load timeout (default: 30s)
-  - [ ] `-w, --wait` - Additional wait after page load
-  - [ ] `--no-full-page` - Capture only viewport
-- [ ] Implement error handling:
-  - [ ] Use ts-results for functional error handling
-  - [ ] Proper exit codes (0 success, 1 error)
-  - [ ] Clear error messages to stderr
+- [✅] Add essential CLI options:
+  - [✅] `-o, --output` - Output file path
+  - [✅] `-t, --timeout` - Page load timeout (default: 30s)
+  - [✅] `-w, --wait` - Additional wait after page load
+  - [✅] `--no-full-page` - Capture only viewport
+- [✅] Implement error handling:
+  - [✅] Use ts-results for functional error handling
+  - [✅] Proper exit codes (0 success, 1 error)
+  - [✅] Clear error messages to stderr
 
 ---
 

@@ -51,6 +51,8 @@ export default [
       "unicorn/no-useless-undefined": "off",
       "unicorn/no-null": "off",
       "unicorn/prevent-abbreviations": "off",
+      // CLI applications need process.exit for proper exit codes
+      "unicorn/no-process-exit": "off",
     },
   },
   // This disables rules that conflict with prettier

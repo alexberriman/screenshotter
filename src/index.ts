@@ -40,7 +40,7 @@ program
           const viewportResult = parseViewport(options.viewport);
           if (viewportResult.err) {
             console.error(`Error: ${viewportResult.val}`);
-            throw new Error("Invalid viewport");
+            process.exit(1);
           }
           screenshotOptions.viewport = viewportResult.val;
         }
@@ -49,15 +49,14 @@ program
 
         if (result.err) {
           console.error(`Error: ${result.val}`);
-          // For CLI, we use throw to exit with error
-          throw new Error("Screenshot failed");
+          process.exit(1);
         }
 
         console.log(`Screenshot saved to: ${result.val}`);
+        process.exit(0);
       } catch (error) {
-        console.error(`Unexpected error: ${error}`);
-        // Re-throw to let Node.js handle the exit
-        throw error;
+        console.error(`Error: ${error instanceof Error ? error.message : String(error)}`);
+        process.exit(1);
       }
     }
   );
