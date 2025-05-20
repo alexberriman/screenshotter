@@ -48,3 +48,7 @@ screenshots/
 !src/**/*.png
 !src/**/*.jpg
 !src/**/*.jpeg
+
+# Cache directories
+assistant_cache/
+prompt_enhancement_cache/
